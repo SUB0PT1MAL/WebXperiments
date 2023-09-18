@@ -57,7 +57,7 @@ function draw() {
     if (!display[seg.y]) {
       display[seg.y] = [];
     }
-    display[seg.y][seg.x] = config.leaves[Math.floor(Math.random() * config.leaves.length)];
+    display[seg.y][seg.x] = config.leaves[Math.floor(Math.random() * config.length)];
   }
 
   // Draw display
