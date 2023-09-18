@@ -1,5 +1,6 @@
 // Tree config  
 const config = {
+  lenght: 10,
   lifeStart: 32, 
   branchMultiplier: 5,
   leaves: ["~", "*", "#", "@"]
