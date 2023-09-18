@@ -1,74 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    #tree {
-      font-family: monospace;
-      white-space: pre;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <div id="tree"></div>
 
-  <script>
-
-    // Config
-    const lifeStart = 32;
-    const branchMultiplier = 5;
-    const leaves = ["~", "*", "#", "@"];
-    
-    // Tree data structure
-    let trunk = {
-      x: 0,
-      y: 0,
-      dx: 0,
-      dy: 0,
-      life: lifeStart,
-      type: "trunk" 
-    };
-
-    // Draw loop
-    function draw() {
-    
-      let treeHTML = "";
-      
-      // Check for branching
-      if (Math.random() < 0.1 && trunk.life > branchMultiplier) {
-        let branch = {
-          x: trunk.x,
-          y: trunk.y,
-          life: trunk.life / 2,
-          type: "branch"
-        };
-        trunk.branches.push(branch);
-      }
-      
-      // Update segments
-      trunk.x += trunk.dx;
-      trunk.y += trunk.dy;
-      trunk.life--;
-      
-      // Choose display character
-      let char = trunk.type == "trunk" ? "/|\\" : leaves[Math.floor(Math.random()*leaves.length)];
-      
-      // Draw segment
-      treeHTML += `<span style="color: grey">${char}</span>`;
-      
-      // Check end of life
-      if (trunk.life == 0) {
-        return;  
-      }
-      
-      // Render and loop  
-      document.getElementById("tree").innerHTML = treeHTML;
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
