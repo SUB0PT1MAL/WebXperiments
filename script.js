@@ -1,9 +1,9 @@
-// Tree config  
+// Tree config 
 const config = {
   length: 10,
-  lifeStart: 32, 
+  lifeStart: 32,
   branchMultiplier: 5,
-  leaves: ["~", "*", "#", "@"]
+  leaves: ["~", "*", "#", "@"]  
 };
 
 // Main tree object
@@ -14,10 +14,10 @@ function init() {
 
   // Create trunk
   tree.trunk = {
-    x: 0,
-    y: 0, 
+    x: 0, 
+    y: 0,
     branches: [],
-    life: config.lifeStart
+    life: config.lifeStart 
   };
 
   draw();
@@ -26,8 +26,17 @@ function init() {
 // Main draw loop
 function draw() {
 
-  // 2D array to represent display
+  // Determine display size
+  let minX = 0;
+  let maxX = 0;
+  let minY = 0;
+  let maxY = tree.trunk.y;
+
+  // Initialize display 
   let display = [];
+  for (let y = minY; y < maxY; y++) {
+    display[y] = [];
+  }
 
   // Add new branches
   if (Math.random() < 0.1 && tree.trunk.life > config.branchMultiplier) {
@@ -60,7 +69,7 @@ function draw() {
     display[seg.y][seg.x] = config.leaves[Math.floor(Math.random() * config.length)];
   }
 
-  // Draw display
+  // Render tree
   let treeHTML = "";
   for (let y = 0; y < display.length; y++) {
     for (let x = 0; x < display[y].length; x++) {
