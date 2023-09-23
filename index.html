@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="styles.css">
+<title>Bonsai Tree Generator</title>
+<style>
+body {
+  font-family: sans-serif;
+}
+
+.bonsai {
+  width: 500px;
+}
+
+.bonsai-pot {
+  width: 100px;
+  height: 50px;
+  background-color: brown;
+}
+
+.bonsai-trunk {
+  width: 50px;
+  height: 100px;
+  background-color: green;
+}
+
+.bonsai-leaves {
+  width: 300px;
+  height: 50px;
+  background-color: darkgreen;
+}
+</style>
 </head>
 <body>
+<div class="bonsai">
+  <div class="bonsai-pot"></div>
+  <div class="bonsai-trunk"></div>
+  <div class="bonsai-leaves"></div>
+</div>
 
-  <div id="tree"></div>
+<script>
+// Create a bonsai tree object.
+var bonsai = {
+  pot: document.querySelector(".bonsai-pot"),
+  trunk: document.querySelector(".bonsai-trunk"),
+  leaves: document.querySelector(".bonsai-leaves"),
+  grow: function() {
+    // Increase the height of the trunk by 10px.
+    this.trunk.style.height = this.trunk.style.height + 10 + "px";
 
-  <script src="script.js"></script>
+    // Increase the width of the leaves by 10px.
+    this.leaves.style.width = this.leaves.style.width + 10 + "px";
 
+    // Check if the bonsai tree has reached its full height.
+    if (this.trunk.style.height >= 500) {
+      // Stop the bonsai tree from growing.
+      clearInterval(this.interval);
+    }
+  }
+};
+
+// Start the bonsai tree from growing.
+bonsai.interval = setInterval(bonsai.grow, 100);
+</script>
 </body>
 </html>
